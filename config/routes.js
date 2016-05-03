@@ -1,5 +1,6 @@
 'use strict';
 const userRoutes = require('../lib/user/routes');
+const circuitRoutes = require('../lib/circuits/routes');
 const halacious = require('halacious');
 
 module.exports = function routes (opts) {
@@ -11,6 +12,8 @@ module.exports = function routes (opts) {
         var ns = server.plugins.halacious.namespaces.add({ name: 'circuits', description: 'A company for lifters', prefix: 'cc'});
         ns.rel({ name: 'users', description: 'a collection of users' });
         ns.rel({ name: 'user', description: 'a single user' });
+        ns.rel({ name: 'circuits', description: 'a collection of circuits' });
+        ns.rel({ name: 'circuit', description: 'a single circuit' });
     });
 
     const routes = [
@@ -22,7 +25,8 @@ module.exports = function routes (opts) {
             }
         }
     ]
-    .concat(userRoutes(opts));
+    .concat(userRoutes(opts))
+    .concat(circuitRoutes(opts))
 
     return routes;
 }
