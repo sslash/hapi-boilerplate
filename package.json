@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "npm run db:clean && ./node_modules/mocha/bin/mocha --recursive",
+    "test:watch": "./node_modules/mocha/bin/mocha --recursive --watch",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "clean": "rm ./heapdump*",
+    "db:clean": "psql -d circuits-development -f db/drop_all.sql",
     "db:migrate": "node_modules/.bin/db-migrate",
     "db:migrate:up": "node_modules/.bin/db-migrate up --config db/database.json --migrations-dir=db/.migrations",
     "db:migrate:up:prod": "node_modules/.bin/db-migrate up --config db/database.json --migrations-dir=db/.migrations -e prod",
@@ -41,6 +43,9 @@
     "vision": "^4.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.9.2"
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.9.2",
+    "superagent": "^1.8.3"
   }
 }

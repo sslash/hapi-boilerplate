@@ -21,8 +21,15 @@ module.exports = function routes (opts) {
             path: '/',
             method: 'get',
             handler: function (req, reply) {
+                console.log('yuo man');
                 reply({message: 'Welcome.'});
-            }
+            },
+            config: {
+                state: {
+                    parse: false, // parse and store in request.state
+                    failAction: 'ignore' // may also be 'ignore' or 'log'
+                }
+            }            
         }
     ]
     .concat(userRoutes(opts))
