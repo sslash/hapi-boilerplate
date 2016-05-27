@@ -22,7 +22,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "urijs": "^1.16.1",
     "bcrypt": "^0.8.6",
     "bluebird": "^3.3.5",
     "boom": "^3.1.2",
