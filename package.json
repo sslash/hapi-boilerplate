@@ -7,6 +7,7 @@
     "test": "npm run db:clean && ./node_modules/mocha/bin/mocha --recursive",
     "test:watch": "./node_modules/mocha/bin/mocha --recursive --watch",
     "start": "node index.js",
+    "start:prod": "NODE_ENV=production heroku local",
     "dev": "nodemon index.js",
     "clean": "rm ./heapdump*",
     "db:clean": "psql -d circuits-development -f db/drop_all.sql",
