@@ -12,15 +12,14 @@ const pingPg = require('../lib/helpers/pingPg');
 
 const server = new Hapi.Server();
 server.connection({
-    host: parameters.server.host,
-    port: parameters.server.port
+    port: process.env.PORT || 4444
 });
 
 server.register(plugins, (err) => {
     if (err) {
         throw err;
     }
-    console.log('server plugins was successfull loaded');
+    logger.info('server plugins was successfull loaded');
 });
 
 server.route(routes({server}));
