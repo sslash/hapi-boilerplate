@@ -25,6 +25,7 @@ INSERT INTO moves (title, description, gif) VALUES ('Jumping burpees', 'Push-ups
 
 
 
+-- nice tags: Chill, abs, body-weight, guns, doubles
 
 -- create circuits
 INSERT INTO circuits (title, tags) VALUES ('Circuit of doom', Array['base-moves', 'strength']);
