@@ -31,7 +31,7 @@ const goodOptions = {
 }
 
 
-module.exports = function plugins (config) {
+module.exports = function registerPlugins (config) {
 
     const plugins = [
 
@@ -86,6 +86,12 @@ module.exports = function plugins (config) {
             }
         }
     ];
+
+    // Enable proxying requests to webpack dev server (proxy handler)
+    if (process.env.NODE_ENV === 'development') {
+        var H2o2 = require('h2o2');
+        plugins.push({ register: H2o2 });
+    }
 
     return plugins;
 };

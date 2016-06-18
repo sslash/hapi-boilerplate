@@ -1,0 +1,8 @@
+{
+  "sandbox": {
+    "js": "/static/build/sandbox-bundle-d1181b35a9bba7276db5.js"
+  },
+  "app": {
+    "js": "/static/build/app-bundle-d1181b35a9bba7276db5.js"
+  }
+}

@@ -1,9 +1,10 @@
 'use strict';
 const userRoutes = require('../lib/user/routes');
 const circuitRoutes = require('../lib/circuits/routes');
+const moveRoutes = require('../lib/moves/routes');
 const halacious = require('halacious');
 
-module.exports = function routes (opts) {
+module.exports = function registerRoutes (opts) {
     const server = opts.server;
 
     server.register({ register: halacious, options: { absolute: true }}, function(err){
@@ -17,22 +18,23 @@ module.exports = function routes (opts) {
     });
 
     const routes = [
-        {
-            path: '/',
-            method: 'get',
-            handler: function (req, reply) {
-                console.log('yuo man');
-                reply({message: 'Welcome.'});
-            },
-            config: {
-                state: {
-                    parse: false, // parse and store in request.state
-                    failAction: 'ignore' // may also be 'ignore' or 'log'
-                }
-            }            
-        }
+        // {
+        //     path: '/',
+        //     method: 'get',
+        //     handler: function (req, reply) {
+        //         console.log('yuo man');
+        //         reply({message: 'Welcome.'});
+        //     },
+        //     config: {
+        //         state: {
+        //             parse: false, // parse and store in request.state
+        //             failAction: 'ignore' // may also be 'ignore' or 'log'
+        //         }
+        //     }            
+        // }
     ]
     .concat(userRoutes(opts))
+    .concat(moveRoutes(opts))
     .concat(circuitRoutes(opts))
 
     return routes;
